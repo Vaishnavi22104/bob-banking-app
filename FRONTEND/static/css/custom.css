@@ -1,0 +1,79 @@
+/*
+ * custom.css — Project-specific overrides on top of Bootstrap 5.
+ *
+ * Keep this file minimal.  Use Bootstrap utility classes in HTML first;
+ * add CSS here only when no utility class covers the need.
+ */
+
+/* ---- Body & layout ---------------------------------------------------- */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
+  flex: 1;
+}
+
+/* ---- Navbar ------------------------------------------------------------ */
+.navbar {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.15);
+}
+
+.navbar-brand {
+  letter-spacing: 0.03em;
+  font-size: 1.25rem;
+}
+
+/* ---- Balance card ------------------------------------------------------- */
+.balance-card {
+  background: linear-gradient(135deg, #1a56db 0%, #0e3a9a 100%);
+  border-radius: 1rem;
+}
+
+.balance-icon-bg {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* ---- Transaction form cards -------------------------------------------- */
+.card {
+  border-radius: 0.75rem;
+}
+
+.card-header {
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+
+/* ---- Login page --------------------------------------------------------- */
+.login-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  background: #e8f0fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Alerts ------------------------------------------------------------ */
+.alert {
+  border-radius: 0.6rem;
+  border-left-width: 4px;
+}
+
+/* ---- Footer ------------------------------------------------------------ */
+footer {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* ---- Responsive tweaks ------------------------------------------------- */
+@media (max-width: 576px) {
+  .display-6 {
+    font-size: 1.8rem;
+  }
+}
