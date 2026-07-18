@@ -189,6 +189,27 @@ def withdraw():
     and redirect back to /dashboard (Post/Redirect/Get pattern).
     """
     raw_amount = request.form.get("amount", "")
+
+    # --- Route-level validation checks ---
+    if not raw_amount or raw_amount.strip() == "":
+        flash("Amount is required", "error")
+        return redirect(url_for("dashboard"))
+
+    try:
+        amount_value = float(raw_amount)
+    except ValueError:
+        flash("Amount must be greater than zero", "error")
+        return redirect(url_for("dashboard"))
+
+    if amount_value <= 0:
+        flash("Amount must be greater than zero", "error")
+        return redirect(url_for("dashboard"))
+
+    customer = db.session.get(Customer, session["customer_id"])
+    if customer and amount_value > customer.balance:
+        flash("Insufficient funds", "error")
+        return redirect(url_for("dashboard"))
+
     success, message = svc_withdraw(session["customer_id"], raw_amount)
     flash(message, "success" if success else "error")
     return redirect(url_for("dashboard"))
